@@ -1,6 +1,12 @@
 from datetime import datetime
-from couchdb.mapping import Document, TextField, BooleanField, DateTimeField
-from couchy.utils import url_for, get_random_uid
+
+from couchdb.mapping import BooleanField
+from couchdb.mapping import DateTimeField
+from couchdb.mapping import Document
+from couchdb.mapping import TextField
+
+from .utils import get_random_uid
+from .utils import url_for
 
 
 class URL(Document):

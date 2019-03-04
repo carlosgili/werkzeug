@@ -56,22 +56,26 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import os
-import re
 import errno
-import tempfile
+import os
 import platform
+import re
+import tempfile
 import warnings
 from hashlib import md5
 from time import time
+
+from .._compat import integer_types
+from .._compat import iteritems
+from .._compat import string_types
+from .._compat import text_type
+from .._compat import to_native
+from ..posixemulation import rename
+
 try:
     import cPickle as pickle
 except ImportError:  # pragma: no cover
     import pickle
-
-from werkzeug._compat import iteritems, string_types, text_type, \
-    integer_types, to_native
-from werkzeug.posixemulation import rename
 
 warnings.warn(
     "'werkzeug.contrib.cache' is deprecated as of version 0.15 and will"

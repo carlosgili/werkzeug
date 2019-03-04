@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# flake8: noqa
 """
     tests.compat
     ~~~~~~~~~~~~
@@ -8,14 +9,8 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-
-# This file shouldn't be linted:
-# flake8: noqa
-
-import warnings
-
-from werkzeug.wrappers import Response
 from werkzeug.test import create_environ
+from werkzeug.wrappers import Response
 
 
 def test_old_imports():

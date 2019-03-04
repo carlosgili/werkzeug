@@ -10,10 +10,13 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from werkzeug.serving import run_simple
-from werkzeug.utils import cached_property, escape, redirect
-from werkzeug.wrappers import Request, Response
 from werkzeug.contrib.securecookie import SecureCookie
+from werkzeug.serving import run_simple
+from werkzeug.utils import cached_property
+from werkzeug.utils import escape
+from werkzeug.utils import redirect
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 # don't use this key but a different one; you could just use

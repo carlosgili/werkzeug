@@ -9,8 +9,24 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import re
 import codecs
+import re
+from functools import update_wrapper
+from itertools import chain
+from itertools import repeat
+from itertools import tee
+
+from ._compat import BytesIO
+from ._compat import text_type
+from ._compat import to_native
+from .datastructures import FileStorage
+from .datastructures import Headers
+from .datastructures import MultiDict
+from .http import parse_options_header
+from .urls import url_decode_stream
+from .wsgi import get_content_length
+from .wsgi import get_input_stream
+from .wsgi import make_line_iter
 
 # there are some platforms where SpooledTemporaryFile is not available.
 # In that case we need to provide a fallback.
@@ -19,16 +35,6 @@ try:
 except ImportError:
     from tempfile import TemporaryFile
     SpooledTemporaryFile = None
-
-from itertools import chain, repeat, tee
-from functools import update_wrapper
-
-from werkzeug._compat import to_native, text_type, BytesIO
-from werkzeug.urls import url_decode_stream
-from werkzeug.wsgi import make_line_iter, \
-    get_input_stream, get_content_length
-from werkzeug.datastructures import Headers, FileStorage, MultiDict
-from werkzeug.http import parse_options_header
 
 
 #: an iterator that yields empty strings
@@ -529,4 +535,4 @@ class MultiPartParser(object):
         return self.cls(form), self.cls(files)
 
 
-from werkzeug import exceptions
+from . import exceptions

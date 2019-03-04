@@ -9,11 +9,23 @@
     :license: BSD-3-Clause
 """
 from datetime import datetime
-from sqlalchemy import Table, Column, Integer, String, DateTime, \
-     ForeignKey, MetaData, join
-from sqlalchemy.orm import relation, create_session, scoped_session, \
-     mapper
-from simplewiki.utils import application, local_manager, parse_creole
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import join
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy import Table
+from sqlalchemy.orm import create_session
+from sqlalchemy.orm import mapper
+from sqlalchemy.orm import relation
+from sqlalchemy.orm import scoped_session
+
+from .utils import application
+from .utils import local_manager
+from .utils import parse_creole
 
 
 # create a global metadata

@@ -12,6 +12,7 @@
     :license: BSD-3-Clause
 """
 import re
+import warnings
 
 
 class UserAgentParser(object):
@@ -205,9 +206,18 @@ class UserAgent(object):
         )
 
 
-# conceptionally this belongs in this module but because we want to lazily
-# load the user agent module (which happens in wrappers.py) we have to import
-# it afterwards.  The class itself has the module set to this module so
-# pickle, inspect and similar modules treat the object as if it was really
-# implemented here.
-from werkzeug.wrappers import UserAgentMixin  # noqa
+# DEPRECATED
+from .wrappers import UserAgentMixin as _UserAgentMixin
+
+
+class UserAgentMixin(_UserAgentMixin):
+    @property
+    def user_agent(self, *args, **kwargs):
+        warnings.warn(
+            "'werkzeug.useragents.UserAgentMixin' should be imported"
+            " from 'werkzeug.wrappers.UserAgentMixin'. This old import"
+            " will be removed in version 1.0.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return super(_UserAgentMixin, self).user_agent

@@ -1,13 +1,17 @@
 from sqlalchemy import create_engine
-
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.wrappers import Request
 from werkzeug.wsgi import ClosingIterator
-from werkzeug.exceptions import HTTPException, NotFound
-from shorty.utils import STATIC_PATH, session, local, local_manager, \
-     metadata, url_map
 
-from shorty import views
+from . import views
+from .utils import local
+from .utils import local_manager
+from .utils import metadata
+from .utils import session
+from .utils import STATIC_PATH
+from .utils import url_map
 
 
 class Shorty(object):

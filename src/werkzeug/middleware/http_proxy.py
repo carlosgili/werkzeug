@@ -7,7 +7,6 @@ Basic HTTP Proxy
 :copyright: 2007 Pallets
 :license: BSD-3-Clause
 """
-
 import socket
 
 from ..datastructures import EnvironHeaders
@@ -179,7 +178,7 @@ class ProxyMiddleware(object):
 
                 resp = con.getresponse()
             except socket.error:
-                from werkzeug.exceptions import BadGateway
+                from ..exceptions import BadGateway
 
                 return BadGateway()(environ, start_response)
 

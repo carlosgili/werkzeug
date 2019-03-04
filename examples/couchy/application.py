@@ -1,12 +1,16 @@
 from couchdb.client import Server
-from couchy.utils import STATIC_PATH, local, local_manager, \
-     url_map
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.wrappers import Request
 from werkzeug.wsgi import ClosingIterator
-from werkzeug.exceptions import HTTPException, NotFound
-from couchy import views
-from couchy.models import URL
+
+from . import views
+from .models import URL
+from .utils import local
+from .utils import local_manager
+from .utils import STATIC_PATH
+from .utils import url_map
 
 
 class Couchy(object):

@@ -8,16 +8,16 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import pytest
-
 import uuid
 
-from tests import strict_eq
+import pytest
 
+from . import strict_eq
 from werkzeug import routing as r
-from werkzeug.wrappers import Response
-from werkzeug.datastructures import ImmutableDict, MultiDict
+from werkzeug.datastructures import ImmutableDict
+from werkzeug.datastructures import MultiDict
 from werkzeug.test import create_environ
+from werkzeug.wrappers import Response
 
 
 def test_basic_routing():

@@ -1,9 +1,14 @@
-from jinja2 import Environment, PackageLoader
 from os import path
-from werkzeug.wrappers import Request as _Request, BaseResponse
+
+from jinja2 import Environment
+from jinja2 import PackageLoader
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.routing import RequestRedirect
-from werkzeug.exceptions import HTTPException, NotFound
-from i18nurls.urls import map
+from werkzeug.wrappers import BaseResponse
+from werkzeug.wrappers import Request as _Request
+
+from .urls import map
 
 TEMPLATES = path.join(path.dirname(__file__), 'templates')
 views = {}

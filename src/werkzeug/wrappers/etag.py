@@ -136,7 +136,7 @@ class ETagResponseMixin(object):
         :raises: :class:`~werkzeug.exceptions.RequestedRangeNotSatisfiable`
                  if `Range` header could not be parsed or satisfied.
         """
-        from werkzeug.exceptions import RequestedRangeNotSatisfiable
+        from ..exceptions import RequestedRangeNotSatisfiable
         if accept_ranges is None:
             return False
         self.headers['Accept-Ranges'] = accept_ranges

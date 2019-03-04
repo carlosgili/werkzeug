@@ -10,8 +10,9 @@
     :license: BSD-3-Clause
 """
 import click
-from coolmagic import make_app
 from werkzeug.serving import run_simple
+
+from coolmagic import make_app
 
 
 @click.group()

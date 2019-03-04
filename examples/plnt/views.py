@@ -9,8 +9,11 @@
     :license: BSD-3-Clause
 """
 from datetime import date
-from plnt.database import Entry
-from plnt.utils import Pagination, expose, render_template
+
+from .database import Entry
+from .utils import expose
+from .utils import Pagination
+from .utils import render_template
 
 
 #: number of items per page

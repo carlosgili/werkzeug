@@ -9,8 +9,9 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+from pickle import dumps
+from pickle import loads
 from threading import Lock
-from pickle import dumps, loads
 
 try:
     import dbm

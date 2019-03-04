@@ -1,8 +1,12 @@
-from werkzeug.utils import redirect
 from werkzeug.exceptions import NotFound
-from couchy.utils import render_template, expose, \
-     validate_url, url_for, Pagination
-from couchy.models import URL
+from werkzeug.utils import redirect
+
+from .models import URL
+from .utils import expose
+from .utils import Pagination
+from .utils import render_template
+from .utils import url_for
+from .utils import validate_url
 
 
 @expose('/')

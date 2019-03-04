@@ -9,8 +9,9 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import click
 import os
+
+import click
 from werkzeug.serving import run_simple
 
 

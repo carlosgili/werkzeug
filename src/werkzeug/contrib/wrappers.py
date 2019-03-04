@@ -23,11 +23,12 @@
 import codecs
 import warnings
 
-from werkzeug.exceptions import BadRequest
-from werkzeug.utils import cached_property
-from werkzeug.http import dump_options_header, parse_options_header
-from werkzeug._compat import wsgi_decoding_dance
-from werkzeug.wrappers.json import JSONMixin as _JSONMixin
+from .._compat import wsgi_decoding_dance
+from ..exceptions import BadRequest
+from ..http import dump_options_header
+from ..http import parse_options_header
+from ..utils import cached_property
+from ..wrappers.json import JSONMixin as _JSONMixin
 
 
 def is_known_charset(charset):

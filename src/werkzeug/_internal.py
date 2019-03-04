@@ -8,15 +8,19 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+import inspect
 import re
 import string
-import inspect
-from weakref import WeakKeyDictionary
-from datetime import datetime, date
+from datetime import date
+from datetime import datetime
 from itertools import chain
+from weakref import WeakKeyDictionary
 
-from werkzeug._compat import iter_bytes, text_type, int_to_byte, range_type, \
-    integer_types
+from ._compat import int_to_byte
+from ._compat import integer_types
+from ._compat import iter_bytes
+from ._compat import range_type
+from ._compat import text_type
 
 
 _logger = None

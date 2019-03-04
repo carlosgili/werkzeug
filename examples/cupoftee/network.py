@@ -9,9 +9,10 @@
     :license: BSD-3-Clause
 """
 import socket
-from math import log
 from datetime import datetime
-from cupoftee.utils import unicodecmp
+from math import log
+
+from .utils import unicodecmp
 
 
 class ServerError(Exception):

@@ -1,4 +1,6 @@
-from i18nurls.application import TemplateResponse, Response, expose
+from .application import expose
+from .application import Response
+from .application import TemplateResponse
 
 
 @expose('index')

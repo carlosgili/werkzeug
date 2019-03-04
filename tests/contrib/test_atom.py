@@ -9,9 +9,12 @@
     :license: BSD-3-Clause
 """
 import datetime
+
 import pytest
 
-from werkzeug.contrib.atom import format_iso8601, AtomFeed, FeedEntry
+from werkzeug.contrib.atom import AtomFeed
+from werkzeug.contrib.atom import FeedEntry
+from werkzeug.contrib.atom import format_iso8601
 
 
 class TestAtomFeed(object):

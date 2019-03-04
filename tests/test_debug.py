@@ -8,21 +8,25 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
-import re
 import io
+import re
+import sys
 
 import pytest
 import requests
 
-from werkzeug.debug import get_machine_id, DebuggedApplication
-from werkzeug.debug.repr import debug_repr, DebugReprGenerator, \
-    dump, helper
+from werkzeug._compat import PY2
+from werkzeug.debug import DebuggedApplication
+from werkzeug.debug import get_machine_id
 from werkzeug.debug.console import HTMLStringO
+from werkzeug.debug.repr import debug_repr
+from werkzeug.debug.repr import DebugReprGenerator
+from werkzeug.debug.repr import dump
+from werkzeug.debug.repr import helper
 from werkzeug.debug.tbtools import Traceback
 from werkzeug.test import Client
-from werkzeug.wrappers import Request, Response
-from werkzeug._compat import PY2
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 class TestDebugRepr(object):

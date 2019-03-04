@@ -14,13 +14,20 @@ import os
 
 import pytest
 
-from tests import strict_eq
+from . import strict_eq
 from werkzeug import wsgi
-from werkzeug._compat import BytesIO, NativeStringIO, StringIO
-from werkzeug.exceptions import BadRequest, ClientDisconnected
-from werkzeug.test import Client, create_environ, run_wsgi_app
+from werkzeug._compat import BytesIO
+from werkzeug._compat import NativeStringIO
+from werkzeug._compat import StringIO
+from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import ClientDisconnected
+from werkzeug.test import Client
+from werkzeug.test import create_environ
+from werkzeug.test import run_wsgi_app
 from werkzeug.wrappers import BaseResponse
-from werkzeug.wsgi import _RangeWrapper, ClosingIterator, wrap_file
+from werkzeug.wsgi import _RangeWrapper
+from werkzeug.wsgi import ClosingIterator
+from werkzeug.wsgi import wrap_file
 
 
 @pytest.mark.parametrize(('environ', 'expect'), (

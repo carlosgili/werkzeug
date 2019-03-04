@@ -10,10 +10,14 @@
 """
 import os
 import posixpath
+
 import pytest
 
-from werkzeug.security import check_password_hash, generate_password_hash, \
-    safe_join, pbkdf2_hex, safe_str_cmp
+from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash
+from werkzeug.security import pbkdf2_hex
+from werkzeug.security import safe_join
+from werkzeug.security import safe_str_cmp
 
 
 def test_safe_str_cmp():

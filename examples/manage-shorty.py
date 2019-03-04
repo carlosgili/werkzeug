@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import click
 import os
 import tempfile
+
+import click
 from werkzeug.serving import run_simple
 
 

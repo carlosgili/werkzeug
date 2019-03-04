@@ -10,8 +10,9 @@
 """
 import pytest
 
-from tests import strict_eq
-from werkzeug.contrib.iterio import IterIO, greenlet
+from .. import strict_eq
+from werkzeug.contrib.iterio import greenlet
+from werkzeug.contrib.iterio import IterIO
 
 
 class TestIterO(object):

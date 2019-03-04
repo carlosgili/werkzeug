@@ -10,8 +10,9 @@
     :license: BSD-3-Clause
 """
 import click
-from i18nurls import make_app
 from werkzeug.serving import run_simple
+
+from i18nurls import make_app
 
 
 @click.group()

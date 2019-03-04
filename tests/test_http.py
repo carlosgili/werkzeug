@@ -8,14 +8,15 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import pytest
-
 from datetime import datetime
 
-from tests import strict_eq
-from werkzeug._compat import itervalues, wsgi_encoding_dance
+import pytest
 
-from werkzeug import http, datastructures
+from . import strict_eq
+from werkzeug import datastructures
+from werkzeug import http
+from werkzeug._compat import itervalues
+from werkzeug._compat import wsgi_encoding_dance
 from werkzeug.test import create_environ
 
 

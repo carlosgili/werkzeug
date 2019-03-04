@@ -10,10 +10,11 @@
 """
 from functools import reduce
 
-from werkzeug.utils import redirect
 from werkzeug.exceptions import NotFound
-from cupoftee.application import Page
-from cupoftee.utils import unicodecmp
+from werkzeug.utils import redirect
+
+from .application import Page
+from .utils import unicodecmp
 
 
 class ServerList(Page):

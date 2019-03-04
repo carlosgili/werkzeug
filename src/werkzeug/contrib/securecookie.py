@@ -88,19 +88,22 @@ r"""
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import pickle
 import base64
+import pickle
 import warnings
+from hashlib import sha1 as _default_hash
 from hmac import new as hmac
 from time import time
-from hashlib import sha1 as _default_hash
 
-from werkzeug._compat import iteritems, text_type, to_bytes
-from werkzeug.urls import url_quote_plus, url_unquote_plus
-from werkzeug._internal import _date_to_unix
-from werkzeug.contrib.sessions import ModificationTrackingDict
-from werkzeug.security import safe_str_cmp
-from werkzeug._compat import to_native
+from .._compat import iteritems
+from .._compat import text_type
+from .._compat import to_bytes
+from .._compat import to_native
+from .._internal import _date_to_unix
+from ..contrib.sessions import ModificationTrackingDict
+from ..security import safe_str_cmp
+from ..urls import url_quote_plus
+from ..urls import url_unquote_plus
 
 warnings.warn(
     "'werkzeug.contrib.securecookie' is deprecated as of version 0.15"

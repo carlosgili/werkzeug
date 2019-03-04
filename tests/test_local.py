@@ -8,12 +8,12 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import pytest
-
-import time
 import copy
+import time
 from functools import partial
 from threading import Thread
+
+import pytest
 
 from werkzeug import local
 

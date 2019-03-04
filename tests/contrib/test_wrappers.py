@@ -8,10 +8,10 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-
-from werkzeug.contrib import wrappers
 from werkzeug import routing
-from werkzeug.wrappers import Request, Response
+from werkzeug.contrib import wrappers
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 def test_reverse_slash_behavior():

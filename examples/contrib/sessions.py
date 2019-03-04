@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from werkzeug.contrib.sessions import SessionMiddleware
+from werkzeug.contrib.sessions import SessionStore
 from werkzeug.serving import run_simple
-from werkzeug.contrib.sessions import SessionStore, SessionMiddleware
 
 
 class MemorySessionStore(SessionStore):

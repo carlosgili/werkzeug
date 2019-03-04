@@ -28,16 +28,18 @@ This module includes various helpers that fix web server behavior.
 """
 import warnings
 
-try:
-    from urllib import unquote
-except ImportError:
-    from urllib.parse import unquote
+from ..datastructures import Headers
+from ..datastructures import ResponseCacheControl
+from ..http import parse_cache_control_header
+from ..http import parse_options_header
+from ..http import parse_set_header
+from ..middleware.proxy_fix import ProxyFix as _ProxyFix
+from ..useragents import UserAgent
 
-from werkzeug.http import parse_options_header, parse_cache_control_header, \
-    parse_set_header
-from werkzeug.useragents import UserAgent
-from werkzeug.datastructures import Headers, ResponseCacheControl
-from werkzeug.middleware.proxy_fix import ProxyFix as _ProxyFix
+try:
+    from urllib.parse import unquote
+except ImportError:
+    from urllib import unquote
 
 
 class CGIRootFix(object):

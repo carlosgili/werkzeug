@@ -10,11 +10,12 @@
 """
 import pytest
 
-from tests import strict_eq
-
-from werkzeug.datastructures import OrderedMultiDict
+from . import strict_eq
 from werkzeug import urls
-from werkzeug._compat import text_type, NativeStringIO, BytesIO
+from werkzeug._compat import BytesIO
+from werkzeug._compat import NativeStringIO
+from werkzeug._compat import text_type
+from werkzeug.datastructures import OrderedMultiDict
 
 
 def test_parsing():

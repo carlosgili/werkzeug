@@ -9,9 +9,12 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from simplewiki.utils import Response, Pagination, generate_template
-from simplewiki.database import RevisionedPage, Page
-from simplewiki.actions import page_missing
+from .actions import page_missing
+from .database import Page
+from .database import RevisionedPage
+from .utils import generate_template
+from .utils import Pagination
+from .utils import Response
 
 
 

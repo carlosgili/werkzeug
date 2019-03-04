@@ -8,17 +8,15 @@
 """
 from __future__ import print_function
 
-from itertools import count
-
 import logging
 import os
 import platform
 import signal
-import sys
-
 import subprocess
+import sys
 import textwrap
 import time
+from itertools import count
 
 import pytest
 

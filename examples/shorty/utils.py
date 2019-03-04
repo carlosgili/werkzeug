@@ -1,13 +1,19 @@
 from os import path
-from random import sample, randrange
-from jinja2 import Environment, FileSystemLoader
-from werkzeug.local import Local, LocalManager
+from random import randrange
+from random import sample
+
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
+from sqlalchemy import MetaData
+from sqlalchemy.orm import create_session
+from sqlalchemy.orm import scoped_session
+from werkzeug.local import Local
+from werkzeug.local import LocalManager
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
 from werkzeug.urls import url_parse
 from werkzeug.utils import cached_property
 from werkzeug.wrappers import Response
-from werkzeug.routing import Map, Rule
-from sqlalchemy import MetaData
-from sqlalchemy.orm import create_session, scoped_session
 
 
 TEMPLATE_PATH = path.join(path.dirname(__file__), 'templates')

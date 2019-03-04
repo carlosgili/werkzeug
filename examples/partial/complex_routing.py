@@ -1,4 +1,8 @@
-from werkzeug.routing import Map, Rule, Subdomain, Submount, EndpointPrefix
+from werkzeug.routing import EndpointPrefix
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
+from werkzeug.routing import Subdomain
+from werkzeug.routing import Submount
 
 m = Map([
     # Static URLs

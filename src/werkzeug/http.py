@@ -16,29 +16,38 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+import base64
 import re
 import warnings
-from time import time, gmtime
+from datetime import datetime
+from datetime import timedelta
+from hashlib import md5
+from time import gmtime
+from time import time
+
+from ._compat import integer_types
+from ._compat import iteritems
+from ._compat import PY2
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import to_bytes
+from ._compat import to_unicode
+from ._compat import try_coerce_native
+from ._internal import _cookie_parse_impl
+from ._internal import _cookie_quote
+from ._internal import _make_cookie_domain
+
 try:
     from email.utils import parsedate_tz
-except ImportError:  # pragma: no cover
+except ImportError:
     from email.Utils import parsedate_tz
+
 try:
     from urllib.request import parse_http_list as _parse_list_header
     from urllib.parse import unquote_to_bytes as _unquote
-except ImportError:  # pragma: no cover
-    from urllib2 import parse_http_list as _parse_list_header, \
-        unquote as _unquote
-from datetime import datetime, timedelta
-from hashlib import md5
-import base64
-
-from werkzeug._internal import _cookie_quote, _make_cookie_domain, \
-    _cookie_parse_impl
-from werkzeug._compat import to_unicode, iteritems, text_type, \
-    string_types, try_coerce_native, to_bytes, PY2, \
-    integer_types
-
+except ImportError:
+    from urllib2 import parse_http_list as _parse_list_header
+    from urllib2 import unquote as _unquote
 
 _cookie_charset = 'latin1'
 _basic_auth_charset = 'utf-8'
@@ -1177,19 +1186,24 @@ def is_byte_range_valid(start, stop, length):
 
 
 # circular dependency fun
-from werkzeug.datastructures import Accept, HeaderSet, ETags, Authorization, \
-    WWWAuthenticate, TypeConversionDict, IfRange, Range, ContentRange, \
-    RequestCacheControl
-from werkzeug.urls import iri_to_uri
+from .datastructures import Accept
+from .datastructures import Authorization
+from .datastructures import ContentRange
+from .datastructures import ETags
+from .datastructures import HeaderSet
+from .datastructures import IfRange
+from .datastructures import Range
+from .datastructures import RequestCacheControl
+from .datastructures import TypeConversionDict
+from .datastructures import WWWAuthenticate
+from .urls import iri_to_uri
 
 
 # DEPRECATED
-from werkzeug.datastructures import (
-    MIMEAccept as _MIMEAccept,
-    CharsetAccept as _CharsetAccept,
-    LanguageAccept as _LanguageAccept,
-    Headers as _Headers,
-)
+from .datastructures import CharsetAccept as _CharsetAccept
+from .datastructures import Headers as _Headers
+from .datastructures import LanguageAccept as _LanguageAccept
+from .datastructures import MIMEAccept as _MIMEAccept
 
 
 class MIMEAccept(_MIMEAccept):

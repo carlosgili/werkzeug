@@ -11,15 +11,21 @@
     :license: BSD-3-Clause
 """
 from os import path
-from sqlalchemy import create_engine
 
+from sqlalchemy import create_engine
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.utils import redirect
 from werkzeug.wsgi import ClosingIterator
-from simplewiki.utils import Request, local, local_manager, href
-from simplewiki.database import session, metadata
-from simplewiki import actions
-from simplewiki.specialpages import pages, page_not_found
+
+from . import actions
+from .database import metadata
+from .database import session
+from .specialpages import page_not_found
+from .specialpages import pages
+from .utils import href
+from .utils import local
+from .utils import local_manager
+from .utils import Request
 
 
 #: path to shared data

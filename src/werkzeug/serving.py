@@ -37,18 +37,29 @@
 """
 import io
 import os
+import signal
 import socket
 import sys
-import signal
 
-
-can_fork = hasattr(os, "fork")
-
+import werkzeug
+from ._compat import PY2
+from ._compat import reraise
+from ._compat import WIN
+from ._compat import wsgi_encoding_dance
+from ._internal import _log
+from .exceptions import InternalServerError
+from .urls import uri_to_iri
+from .urls import url_parse
+from .urls import url_unquote
 
 try:
-    import termcolor
+    import socketserver
+    from http.server import BaseHTTPRequestHandler
+    from http.server import HTTPServer
 except ImportError:
-    termcolor = None
+    import SocketServer as socketserver
+    from BaseHTTPServer import HTTPServer
+    from BaseHTTPServer import BaseHTTPRequestHandler
 
 try:
     import ssl
@@ -57,6 +68,11 @@ except ImportError:
         def __getattr__(self, name):
             raise RuntimeError('SSL support unavailable')
     ssl = _SslDummy()
+
+try:
+    import termcolor
+except ImportError:
+    termcolor = None
 
 
 def _get_openssl_crypto_module():
@@ -68,15 +84,8 @@ def _get_openssl_crypto_module():
     else:
         return crypto
 
-
-try:
-    import SocketServer as socketserver
-    from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
-except ImportError:
-    import socketserver
-    from http.server import HTTPServer, BaseHTTPRequestHandler
-
 ThreadingMixIn = socketserver.ThreadingMixIn
+can_fork = hasattr(os, "fork")
 
 if can_fork:
     ForkingMixIn = socketserver.ForkingMixIn
@@ -88,17 +97,6 @@ try:
     af_unix = socket.AF_UNIX
 except AttributeError:
     af_unix = None
-
-
-import werkzeug
-from werkzeug._internal import _log
-from werkzeug._compat import PY2, WIN, reraise, wsgi_encoding_dance
-from werkzeug.urls import (
-    url_parse,
-    url_unquote,
-    uri_to_iri,
-)
-from werkzeug.exceptions import InternalServerError
 
 
 LISTEN_QUEUE = 128
@@ -300,7 +298,7 @@ class WSGIRequestHandler(BaseHTTPRequestHandler, object):
         except Exception:
             if self.server.passthrough_errors:
                 raise
-            from werkzeug.debug.tbtools import get_current_traceback
+            from .debug.tbtools import get_current_traceback
             traceback = get_current_traceback(ignore_system_exceptions=True)
             try:
                 # if we haven't yet sent the headers but they are set
@@ -839,10 +837,10 @@ def run_simple(hostname, port, application, use_reloader=False,
     if not isinstance(port, int):
         raise TypeError('port must be an integer')
     if use_debugger:
-        from werkzeug.debug import DebuggedApplication
+        from .debug import DebuggedApplication
         application = DebuggedApplication(application, use_evalex)
     if static_files:
-        from werkzeug.wsgi import SharedDataMiddleware
+        from .middleware.shared_data import SharedDataMiddleware
         application = SharedDataMiddleware(application, static_files)
 
     def log_startup(sock):
@@ -906,7 +904,7 @@ def run_simple(hostname, port, application, use_reloader=False,
 
         # Do not use relative imports, otherwise "python -m werkzeug.serving"
         # breaks.
-        from werkzeug._reloader import run_with_reloader
+        from ._reloader import run_with_reloader
         run_with_reloader(inner, extra_files, reloader_interval,
                           reloader_type)
     else:
@@ -916,7 +914,7 @@ def run_simple(hostname, port, application, use_reloader=False,
 def run_with_reloader(*args, **kwargs):
     # People keep using undocumented APIs.  Do not use this function
     # please, we do not guarantee that it continues working.
-    from werkzeug._reloader import run_with_reloader
+    from ._reloader import run_with_reloader
     return run_with_reloader(*args, **kwargs)
 
 
@@ -925,7 +923,7 @@ def main():
 
     # in contrast to argparse, this works at least under Python < 2.7
     import optparse
-    from werkzeug.utils import import_string
+    from .utils import import_string
 
     parser = optparse.OptionParser(
         usage='Usage: %prog [options] app_module:app_object')

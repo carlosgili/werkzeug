@@ -17,11 +17,11 @@ r"""
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
-import os
 import errno
-import time
+import os
 import random
+import sys
+import time
 
 from ._compat import to_unicode
 from .filesystem import get_filesystem_encoding

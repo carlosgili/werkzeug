@@ -8,13 +8,15 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
 import code
+import sys
 from types import CodeType
 
-from werkzeug.utils import escape
-from werkzeug.local import Local
-from werkzeug.debug.repr import debug_repr, dump, helper
+from ..local import Local
+from ..utils import escape
+from .repr import debug_repr
+from .repr import dump
+from .repr import helper
 
 
 _local = Local()
@@ -182,12 +184,12 @@ class _InteractiveConsole(code.InteractiveInterpreter):
             self.showtraceback()
 
     def showtraceback(self):
-        from werkzeug.debug.tbtools import get_current_traceback
+        from .tbtools import get_current_traceback
         tb = get_current_traceback(skip=1)
         sys.stdout._write(tb.render_summary())
 
     def showsyntaxerror(self, filename=None):
-        from werkzeug.debug.tbtools import get_current_traceback
+        from .tbtools import get_current_traceback
         tb = get_current_traceback(skip=4)
         sys.stdout._write(tb.render_summary())
 

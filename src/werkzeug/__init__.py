@@ -14,10 +14,8 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from types import ModuleType
 import sys
-
-from werkzeug._compat import iteritems
+from types import ModuleType
 
 __version__ = '0.15.dev'
 
@@ -103,7 +101,7 @@ attribute_modules = frozenset(['exceptions', 'routing'])
 
 
 object_origins = {}
-for module, items in iteritems(all_by_module):
+for module, items in all_by_module.items():
     for item in items:
         object_origins[item] = module
 

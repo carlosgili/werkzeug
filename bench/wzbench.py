@@ -11,17 +11,20 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from __future__ import division, print_function
-import os
+from __future__ import division
+from __future__ import print_function
+
 import gc
-import sys
+import os
 import subprocess
+import sys
+from timeit import default_timer as timer
+from types import FunctionType
+
 try:
     from cStringIO import StringIO
 except ImportError:
     from io import StringIO
-from timeit import default_timer as timer
-from types import FunctionType
 
 PY2 = sys.version_info[0] == 2
 

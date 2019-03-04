@@ -8,15 +8,16 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import pytest
-
 from datetime import datetime
-from warnings import filterwarnings, resetwarnings
+from warnings import filterwarnings
+from warnings import resetwarnings
 
-from werkzeug.wrappers import Request, Response
+import pytest
 
 from werkzeug import _internal as internal
 from werkzeug.test import create_environ
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 def test_date_to_unix():

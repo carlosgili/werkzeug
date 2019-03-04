@@ -8,43 +8,54 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
 import mimetypes
+import sys
+from io import BytesIO
+from itertools import chain
+from random import random
+from tempfile import TemporaryFile
 from time import time
 
-from random import random
-from itertools import chain
-from tempfile import TemporaryFile
-from io import BytesIO
+from ._compat import iteritems
+from ._compat import iterlists
+from ._compat import itervalues
+from ._compat import make_literal_wrapper
+from ._compat import reraise
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import to_bytes
+from ._compat import wsgi_encoding_dance
+from ._internal import _get_environ
+from .datastructures import CallbackDict
+from .datastructures import CombinedMultiDict
+from .datastructures import EnvironHeaders
+from .datastructures import FileMultiDict
+from .datastructures import FileStorage
+from .datastructures import Headers
+from .datastructures import MultiDict
+from .http import dump_cookie
+from .http import dump_options_header
+from .http import parse_options_header
+from .urls import iri_to_uri
+from .urls import url_encode
+from .urls import url_fix
+from .urls import url_parse
+from .urls import url_unparse
+from .urls import url_unquote
+from .utils import get_content_type
+from .wrappers import BaseRequest
+from .wsgi import ClosingIterator
+from .wsgi import get_current_url
 
 try:
-    from urllib2 import Request as U2Request
-except ImportError:
     from urllib.request import Request as U2Request
+except ImportError:
+    from urllib2 import Request as U2Request
+
 try:
     from http.cookiejar import CookieJar
-except ImportError:  # Py2
+except ImportError:
     from cookielib import CookieJar
-
-from werkzeug._compat import iterlists, iteritems, itervalues, to_bytes, \
-    string_types, text_type, reraise, wsgi_encoding_dance, \
-    make_literal_wrapper
-from werkzeug._internal import _get_environ
-from werkzeug.wrappers import BaseRequest
-from werkzeug.urls import url_encode, url_fix, iri_to_uri, url_unquote, \
-    url_unparse, url_parse
-from werkzeug.wsgi import get_current_url, ClosingIterator
-from werkzeug.utils import dump_cookie, get_content_type
-from werkzeug.datastructures import (
-    FileMultiDict,
-    MultiDict,
-    CombinedMultiDict,
-    Headers,
-    FileStorage,
-    CallbackDict,
-    EnvironHeaders,
-)
-from werkzeug.http import dump_options_header, parse_options_header
 
 
 def stream_encode_multipart(values, use_tempfile=True, threshold=1024 * 500,

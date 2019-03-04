@@ -10,19 +10,23 @@
 """
 import csv
 import io
+from os.path import dirname
+from os.path import join
+
 import pytest
 
-from os.path import join, dirname
-
-from tests import strict_eq
-
+from . import strict_eq
 from werkzeug import formparser
-from werkzeug.test import create_environ, Client
-from werkzeug.wrappers import Request, Response
-from werkzeug.exceptions import RequestEntityTooLarge
+from werkzeug._compat import BytesIO
+from werkzeug._compat import PY2
 from werkzeug.datastructures import MultiDict
-from werkzeug.formparser import parse_form_data, FormDataParser
-from werkzeug._compat import BytesIO, PY2
+from werkzeug.exceptions import RequestEntityTooLarge
+from werkzeug.formparser import FormDataParser
+from werkzeug.formparser import parse_form_data
+from werkzeug.test import Client
+from werkzeug.test import create_environ
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 @Request.application

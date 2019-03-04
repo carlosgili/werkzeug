@@ -13,9 +13,10 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import click
 import os
 import sys
+
+import click
 sys.path.append(os.path.join(os.path.dirname(__file__), 'webpylike'))
 from webpylike.example import app
 from werkzeug.serving import run_simple

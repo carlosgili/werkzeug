@@ -8,17 +8,26 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import re
 import codecs
 import mimetypes
+import re
 from copy import deepcopy
 from itertools import repeat
 
-from werkzeug._internal import _missing
-from werkzeug._compat import BytesIO, collections_abc, iterkeys, itervalues, \
-    iteritems, iterlists, PY2, text_type, integer_types, string_types, \
-    make_literal_wrapper, to_native
-from werkzeug.filesystem import get_filesystem_encoding
+from ._compat import BytesIO
+from ._compat import collections_abc
+from ._compat import integer_types
+from ._compat import iteritems
+from ._compat import iterkeys
+from ._compat import iterlists
+from ._compat import itervalues
+from ._compat import make_literal_wrapper
+from ._compat import PY2
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import to_native
+from ._internal import _missing
+from .filesystem import get_filesystem_encoding
 
 
 _locale_delim_re = re.compile(r'[_-]')
@@ -2792,7 +2801,14 @@ class FileStorage(object):
 
 
 # circular dependencies
-from werkzeug.http import dump_options_header, dump_header, generate_etag, \
-    quote_header_value, parse_set_header, unquote_etag, quote_etag, \
-    parse_options_header, http_date, is_byte_range_valid
-from werkzeug import exceptions
+from . import exceptions
+from .http import dump_header
+from .http import dump_options_header
+from .http import generate_etag
+from .http import http_date
+from .http import is_byte_range_valid
+from .http import parse_options_header
+from .http import parse_set_header
+from .http import quote_etag
+from .http import quote_header_value
+from .http import unquote_etag

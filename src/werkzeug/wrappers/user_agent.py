@@ -10,5 +10,5 @@ class UserAgentMixin(object):
     @cached_property
     def user_agent(self):
         """The current user agent."""
-        from werkzeug.useragents import UserAgent
+        from ..useragents import UserAgent
         return UserAgent(self.environ)

@@ -13,10 +13,17 @@
     :license: BSD-3-Clause
 """
 from difflib import unified_diff
-from simplewiki.utils import Response, generate_template, \
-     href, format_datetime
-from simplewiki.database import RevisionedPage, Page, Revision, session
+
 from werkzeug.utils import redirect
+
+from .database import Page
+from .database import Revision
+from .database import RevisionedPage
+from .database import session
+from .utils import format_datetime
+from .utils import generate_template
+from .utils import href
+from .utils import Response
 
 
 def on_show(request, page_name):

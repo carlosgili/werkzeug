@@ -11,29 +11,38 @@
 import contextlib
 import json
 import os
+import pickle
+from datetime import datetime
+from datetime import timedelta
+from io import BytesIO
 
 import pytest
 
-import pickle
-from io import BytesIO
-from datetime import datetime, timedelta
-from werkzeug._compat import iteritems
-
-from tests import strict_eq
-
+from . import strict_eq
 from werkzeug import wrappers
-from werkzeug.exceptions import SecurityError, RequestedRangeNotSatisfiable, \
-    BadRequest
+from werkzeug._compat import implements_iterator
+from werkzeug._compat import iteritems
+from werkzeug._compat import text_type
+from werkzeug.datastructures import Accept
+from werkzeug.datastructures import CharsetAccept
+from werkzeug.datastructures import CombinedMultiDict
+from werkzeug.datastructures import Headers
+from werkzeug.datastructures import ImmutableList
+from werkzeug.datastructures import ImmutableOrderedMultiDict
+from werkzeug.datastructures import ImmutableTypeConversionDict
+from werkzeug.datastructures import LanguageAccept
+from werkzeug.datastructures import MIMEAccept
+from werkzeug.datastructures import MultiDict
+from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import RequestedRangeNotSatisfiable
+from werkzeug.exceptions import SecurityError
 from werkzeug.http import generate_etag
+from werkzeug.test import Client
+from werkzeug.test import create_environ
+from werkzeug.test import run_wsgi_app
 from werkzeug.wrappers.json import JSONMixin
-from werkzeug.wsgi import LimitedStream, wrap_file
-from werkzeug.datastructures import (
-    MultiDict, ImmutableOrderedMultiDict,
-    ImmutableList, ImmutableTypeConversionDict, CharsetAccept,
-    MIMEAccept, LanguageAccept, Accept, CombinedMultiDict, Headers,
-)
-from werkzeug.test import Client, create_environ, run_wsgi_app
-from werkzeug._compat import implements_iterator, text_type
+from werkzeug.wsgi import LimitedStream
+from werkzeug.wsgi import wrap_file
 
 
 class RequestTestResponse(wrappers.BaseResponse):

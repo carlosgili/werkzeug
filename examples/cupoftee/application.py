@@ -9,17 +9,21 @@
     :license: BSD-3-Clause
 """
 import time
-
-from jinja2 import Environment, PackageLoader
 from os import path
 from threading import Thread
-from cupoftee.db import Database
-from cupoftee.network import ServerBrowser
 
+from jinja2 import Environment
+from jinja2 import PackageLoader
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
-from werkzeug.wrappers import Request, Response
-from werkzeug.exceptions import HTTPException, NotFound
-from werkzeug.routing import Map, Rule
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
+
+from .db import Database
+from .network import ServerBrowser
 
 
 templates = path.join(path.dirname(__file__), 'templates')

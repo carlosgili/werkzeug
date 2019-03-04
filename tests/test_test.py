@@ -8,23 +8,30 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-
 import json
+import sys
+from functools import partial
+from io import BytesIO
+
 import pytest
 
-import sys
-from io import BytesIO
-from werkzeug._compat import iteritems, to_bytes, implements_iterator
-from functools import partial
-
-from tests import strict_eq
-
-from werkzeug.wrappers import Request, Response, BaseResponse
-from werkzeug.test import Client, EnvironBuilder, create_environ, \
-    ClientRedirectError, stream_encode_multipart, run_wsgi_app
-from werkzeug.utils import redirect
+from . import strict_eq
+from werkzeug._compat import implements_iterator
+from werkzeug._compat import iteritems
+from werkzeug._compat import to_bytes
+from werkzeug.datastructures import FileStorage
+from werkzeug.datastructures import MultiDict
 from werkzeug.formparser import parse_form_data
-from werkzeug.datastructures import MultiDict, FileStorage
+from werkzeug.test import Client
+from werkzeug.test import ClientRedirectError
+from werkzeug.test import create_environ
+from werkzeug.test import EnvironBuilder
+from werkzeug.test import run_wsgi_app
+from werkzeug.test import stream_encode_multipart
+from werkzeug.utils import redirect
+from werkzeug.wrappers import BaseResponse
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 def cookie_app(environ, start_response):

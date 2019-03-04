@@ -41,12 +41,12 @@ r"""
 """
 import warnings
 
+from .._compat import implements_iterator
+
 try:
     import greenlet
 except ImportError:
     greenlet = None
-
-from werkzeug._compat import implements_iterator
 
 warnings.warn(
     "'werkzeug.contrib.iterio' is deprecated as of version 0.15 and"

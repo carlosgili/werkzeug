@@ -96,28 +96,41 @@
     :license: BSD-3-Clause
 """
 import difflib
-import re
-import uuid
-import posixpath
 import dis
+import posixpath
+import re
 import sys
 import types
-
+import uuid
 from functools import partial
 from pprint import pformat
 from threading import Lock
 
-from werkzeug.urls import url_encode, url_quote, url_join, _fast_url_quote
-from werkzeug.utils import redirect, format_string
-from werkzeug.exceptions import HTTPException, NotFound, MethodNotAllowed, \
-     BadHost
-from werkzeug._internal import _get_environ, _encode_idna
-from werkzeug._compat import itervalues, iteritems, to_unicode, to_bytes, \
-    text_type, string_types, native_string_result, \
-    implements_to_string, wsgi_decoding_dance
-from werkzeug.datastructures import ImmutableDict, MultiDict
-from werkzeug.utils import cached_property
-from werkzeug.wsgi import get_host
+from ._compat import implements_to_string
+from ._compat import iteritems
+from ._compat import itervalues
+from ._compat import native_string_result
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import to_bytes
+from ._compat import to_unicode
+from ._compat import wsgi_decoding_dance
+from ._internal import _encode_idna
+from ._internal import _get_environ
+from .datastructures import ImmutableDict
+from .datastructures import MultiDict
+from .exceptions import BadHost
+from .exceptions import HTTPException
+from .exceptions import MethodNotAllowed
+from .exceptions import NotFound
+from .urls import _fast_url_quote
+from .urls import url_encode
+from .urls import url_join
+from .urls import url_quote
+from .utils import cached_property
+from .utils import format_string
+from .utils import redirect
+from .wsgi import get_host
 
 _rule_re = re.compile(r'''
     (?P<static>[^<]*)                           # static rule data

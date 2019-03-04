@@ -11,10 +11,15 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from os.path import dirname, join
-from jinja2 import Environment, FileSystemLoader
-from werkzeug.local import Local, LocalManager
-from werkzeug.wrappers import BaseRequest, BaseResponse
+from os.path import dirname
+from os.path import join
+
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
+from werkzeug.local import Local
+from werkzeug.local import LocalManager
+from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import BaseResponse
 
 
 local = Local()

@@ -8,11 +8,16 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import feedparser
 from datetime import datetime
+
+import feedparser
 from werkzeug.utils import escape
-from plnt.database import Blog, Entry, session
-from plnt.utils import strip_tags, nl2p
+
+from .database import Blog
+from .database import Entry
+from .database import session
+from .utils import nl2p
+from .utils import strip_tags
 
 
 HTML_MIMETYPES = {'text/html', 'application/xhtml+xml'}

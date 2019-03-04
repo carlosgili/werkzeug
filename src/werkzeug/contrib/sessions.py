@@ -51,22 +51,26 @@ r"""
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import re
 import os
+import re
 import tempfile
 import warnings
-from os import path
-from time import time
-from random import random
 from hashlib import sha1
-from pickle import dump, load, HIGHEST_PROTOCOL
+from os import path
+from pickle import dump
+from pickle import HIGHEST_PROTOCOL
+from pickle import load
+from random import random
+from time import time
 
-from werkzeug.datastructures import CallbackDict
-from werkzeug.utils import dump_cookie, parse_cookie
-from werkzeug.wsgi import ClosingIterator
-from werkzeug.posixemulation import rename
-from werkzeug._compat import PY2, text_type
-from werkzeug.filesystem import get_filesystem_encoding
+from .._compat import PY2
+from .._compat import text_type
+from ..datastructures import CallbackDict
+from ..filesystem import get_filesystem_encoding
+from ..posixemulation import rename
+from ..utils import dump_cookie
+from ..utils import parse_cookie
+from ..wsgi import ClosingIterator
 
 warnings.warn(
     "'werkzeug.contrib.sessions' is deprecated as of version 0.15 and"

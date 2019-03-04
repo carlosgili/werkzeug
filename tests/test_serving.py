@@ -16,6 +16,13 @@ import sys
 import textwrap
 import time
 
+import pytest
+import requests.exceptions
+
+from werkzeug import __version__ as version
+from werkzeug import _reloader
+from werkzeug import serving
+
 try:
     import OpenSSL
 except ImportError:
@@ -27,15 +34,9 @@ except ImportError:
     watchdog = None
 
 try:
-    import httplib
-except ImportError:
     from http import client as httplib
-
-import requests
-import requests.exceptions
-import pytest
-
-from werkzeug import __version__ as version, serving, _reloader
+except ImportError:
+    import httplib
 
 
 def test_serving(dev_server):

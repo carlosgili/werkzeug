@@ -8,16 +8,20 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import os
-import hmac
-import hashlib
-import posixpath
 import codecs
-from struct import Struct
+import hashlib
+import hmac
+import os
+import posixpath
 from random import SystemRandom
+from struct import Struct
 
-from werkzeug._compat import range_type, PY2, text_type, izip, to_bytes, \
-    to_native
+from ._compat import izip
+from ._compat import PY2
+from ._compat import range_type
+from ._compat import text_type
+from ._compat import to_bytes
+from ._compat import to_native
 
 
 SALT_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'

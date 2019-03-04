@@ -8,29 +8,30 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+import getpass
+import hashlib
+import json
+import mimetypes
 import os
 import pkgutil
 import re
 import sys
-import uuid
-import json
 import time
-import getpass
-import hashlib
-import mimetypes
+import uuid
 from itertools import chain
-from os.path import join, basename
-from werkzeug.wrappers import BaseRequest as Request, BaseResponse as Response
-from werkzeug.http import parse_cookie
-from werkzeug.debug.tbtools import get_current_traceback, render_console_html
-from werkzeug.debug.console import Console
-from werkzeug.security import gen_salt
-from werkzeug._internal import _log
-from werkzeug._compat import text_type
+from os.path import basename
+from os.path import join
 
-
-# DEPRECATED
-from werkzeug.debug.repr import debug_repr as _debug_repr
+from .._compat import text_type
+from .._internal import _log
+from ..http import parse_cookie
+from ..security import gen_salt
+from ..wrappers import BaseRequest as Request
+from ..wrappers import BaseResponse as Response
+from .console import Console
+from .repr import debug_repr as _debug_repr
+from .tbtools import get_current_traceback
+from .tbtools import render_console_html
 
 
 def debug_repr(*args, **kwargs):

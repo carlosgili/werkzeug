@@ -18,21 +18,25 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-
 import io
-import pytest
-import tempfile
-
-from tests import strict_eq
-
-
 import pickle
+import tempfile
 from contextlib import contextmanager
-from copy import copy, deepcopy
+from copy import copy
+from copy import deepcopy
 
-from werkzeug import datastructures, http
-from werkzeug._compat import iterkeys, itervalues, iteritems, iterlists, \
-    iterlistvalues, text_type, PY2
+import pytest
+
+from . import strict_eq
+from werkzeug import datastructures
+from werkzeug import http
+from werkzeug._compat import iteritems
+from werkzeug._compat import iterkeys
+from werkzeug._compat import iterlists
+from werkzeug._compat import iterlistvalues
+from werkzeug._compat import itervalues
+from werkzeug._compat import PY2
+from werkzeug._compat import text_type
 from werkzeug.datastructures import Range
 from werkzeug.exceptions import BadRequestKeyError
 

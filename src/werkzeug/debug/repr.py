@@ -13,18 +13,22 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
-import re
 import codecs
+import re
+import sys
 from traceback import format_exception_only
+
+from .._compat import integer_types
+from .._compat import iteritems
+from .._compat import PY2
+from .._compat import string_types
+from .._compat import text_type
+from ..utils import escape
+
 try:
     from collections import deque
 except ImportError:  # pragma: no cover
     deque = None
-from werkzeug.utils import escape
-from werkzeug._compat import iteritems, PY2, text_type, integer_types, \
-    string_types
-
 
 missing = object()
 _paragraph_re = re.compile(r'(?:\r\n|\r|\n){2,}')

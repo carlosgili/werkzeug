@@ -1,12 +1,14 @@
 import os
-import sys
-import time
 import subprocess
+import sys
 import threading
+import time
 from itertools import chain
 
-from werkzeug._internal import _log
-from werkzeug._compat import PY2, iteritems, text_type
+from ._compat import iteritems
+from ._compat import PY2
+from ._compat import text_type
+from ._internal import _log
 
 
 def _iter_module_files():

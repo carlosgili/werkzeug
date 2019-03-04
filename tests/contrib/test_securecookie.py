@@ -9,12 +9,14 @@
     :license: BSD-3-Clause
 """
 import json
+
 import pytest
 
 from werkzeug._compat import to_native
-from werkzeug.utils import parse_cookie
-from werkzeug.wrappers import Request, Response
 from werkzeug.contrib.securecookie import SecureCookie
+from werkzeug.utils import parse_cookie
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 def test_basic_support():

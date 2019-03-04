@@ -1,5 +1,8 @@
 import hypothesis
-from hypothesis.strategies import text, dictionaries, lists, integers
+from hypothesis.strategies import dictionaries
+from hypothesis.strategies import integers
+from hypothesis.strategies import lists
+from hypothesis.strategies import text
 
 from werkzeug import urls
 from werkzeug.datastructures import OrderedMultiDict

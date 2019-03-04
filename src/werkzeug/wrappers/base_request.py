@@ -197,7 +197,7 @@ class BaseRequest(object):
 
         :return: request object
         """
-        from werkzeug.test import EnvironBuilder
+        from ..test import EnvironBuilder
         charset = kwargs.pop('charset', cls.charset)
         kwargs['charset'] = charset
         builder = EnvironBuilder(*args, **kwargs)
@@ -228,7 +228,7 @@ class BaseRequest(object):
         #: the request.  The return value is then called with the latest
         #: two arguments.  This makes it possible to use this decorator for
         #: both methods and standalone WSGI functions.
-        from werkzeug.exceptions import HTTPException
+        from ..exceptions import HTTPException
 
         def application(*args):
             request = cls(args[-2])

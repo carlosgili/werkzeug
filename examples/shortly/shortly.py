@@ -9,16 +9,19 @@
     :license: BSD-3-Clause
 """
 import os
+
 import redis
-
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
 from werkzeug.urls import url_parse
-from werkzeug.wrappers import Request, Response
-from werkzeug.routing import Map, Rule
-from werkzeug.exceptions import HTTPException, NotFound
 from werkzeug.utils import redirect
-
-from jinja2 import Environment, FileSystemLoader
+from werkzeug.wrappers import Request
+from werkzeug.wrappers import Response
 
 
 def base36_encode(number):

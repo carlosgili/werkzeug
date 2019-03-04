@@ -9,7 +9,8 @@
     :license: BSD-3-Clause
 """
 from werkzeug.serving import run_simple
-from werkzeug.wrappers import BaseRequest, BaseResponse
+from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import BaseResponse
 from werkzeug.wsgi import wrap_file
 
 

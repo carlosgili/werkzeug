@@ -9,13 +9,15 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+import base64
 import os
 import sys
-import werkzeug
 from textwrap import wrap
-from werkzeug.wrappers import BaseRequest as Request, BaseResponse as Response
-from werkzeug.utils import escape
-import base64
+
+import werkzeug
+from .utils import escape
+from .wrappers import BaseRequest as Request
+from .wrappers import BaseResponse as Response
 
 logo = Response(base64.b64decode('''
 R0lGODlhoACgAOMIAAEDACwpAEpCAGdgAJaKAM28AOnVAP3rAP/////////
@@ -226,5 +228,5 @@ def test_app(environ, start_response):
 
 
 if __name__ == '__main__':
-    from werkzeug.serving import run_simple
+    from .serving import run_simple
     run_simple('localhost', 5000, test_app, use_reloader=True)

@@ -12,11 +12,18 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from os import path, listdir
-from coolmagic.utils import Request, local_manager
+from os import listdir
+from os import path
+
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 from werkzeug.middleware.shared_data import SharedDataMiddleware
-from werkzeug.routing import Map, Rule, RequestRedirect
-from werkzeug.exceptions import HTTPException, NotFound
+from werkzeug.routing import Map
+from werkzeug.routing import RequestRedirect
+from werkzeug.routing import Rule
+
+from .utils import local_manager
+from .utils import Request
 
 
 class CoolMagicApplication(object):

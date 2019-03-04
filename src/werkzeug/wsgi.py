@@ -11,14 +11,24 @@
 import io
 import re
 import warnings
-from functools import partial, update_wrapper
+from functools import partial
+from functools import update_wrapper
 from itertools import chain
 
-from werkzeug._compat import BytesIO, implements_iterator, \
-    make_literal_wrapper, string_types, text_type, to_bytes, to_unicode, \
-    try_coerce_native, wsgi_get_bytes
-from werkzeug._internal import _encode_idna
-from werkzeug.urls import uri_to_iri, url_join, url_parse, url_quote
+from ._compat import BytesIO
+from ._compat import implements_iterator
+from ._compat import make_literal_wrapper
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import to_bytes
+from ._compat import to_unicode
+from ._compat import try_coerce_native
+from ._compat import wsgi_get_bytes
+from ._internal import _encode_idna
+from .urls import uri_to_iri
+from .urls import url_join
+from .urls import url_parse
+from .urls import url_quote
 
 
 def responder(f):
@@ -157,7 +167,7 @@ def get_host(environ, trusted_hosts=None):
             rv += ':' + environ['SERVER_PORT']
     if trusted_hosts is not None:
         if not host_is_trusted(rv, trusted_hosts):
-            from werkzeug.exceptions import SecurityError
+            from .exceptions import SecurityError
             raise SecurityError('Host "%s" is not trusted' % rv)
     return rv
 
@@ -891,7 +901,7 @@ class LimitedStream(io.IOBase):
         the client went away.  By default a
         :exc:`~werkzeug.exceptions.ClientDisconnected` exception is raised.
         """
-        from werkzeug.exceptions import ClientDisconnected
+        from .exceptions import ClientDisconnected
         raise ClientDisconnected()
 
     def exhaust(self, chunk_size=1024 * 64):
@@ -984,9 +994,10 @@ class LimitedStream(io.IOBase):
         return True
 
 
-from werkzeug.middleware.dispatcher import DispatcherMiddleware as _DispatcherMiddleware
-from werkzeug.middleware.http_proxy import ProxyMiddleware as _ProxyMiddleware
-from werkzeug.middleware.shared_data import SharedDataMiddleware as _SharedDataMiddleware
+# DEPRECATED
+from .middleware.dispatcher import DispatcherMiddleware as _DispatcherMiddleware
+from .middleware.http_proxy import ProxyMiddleware as _ProxyMiddleware
+from .middleware.shared_data import SharedDataMiddleware as _SharedDataMiddleware
 
 
 class ProxyMiddleware(_ProxyMiddleware):

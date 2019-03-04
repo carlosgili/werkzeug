@@ -15,25 +15,24 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from collections import namedtuple
-
 import codecs
 import os
 import re
+from collections import namedtuple
 
-from werkzeug._compat import (
-    PY2,
-    fix_tuple_repr,
-    implements_to_string,
-    make_literal_wrapper,
-    normalize_string_tuple,
-    text_type,
-    to_native,
-    to_unicode,
-    try_coerce_native,
-)
-from werkzeug._internal import _decode_idna, _encode_idna
-from werkzeug.datastructures import MultiDict, iter_multi_items
+from ._compat import fix_tuple_repr
+from ._compat import implements_to_string
+from ._compat import make_literal_wrapper
+from ._compat import normalize_string_tuple
+from ._compat import PY2
+from ._compat import text_type
+from ._compat import to_native
+from ._compat import to_unicode
+from ._compat import try_coerce_native
+from ._internal import _decode_idna
+from ._internal import _encode_idna
+from .datastructures import iter_multi_items
+from .datastructures import MultiDict
 
 # A regular expression for what a valid schema looks like
 _scheme_re = re.compile(r'^[a-zA-Z0-9+-.]+$')
@@ -849,7 +848,7 @@ def url_decode_stream(stream, charset='utf-8', decode_keys=False,
                             and an iterator over all decoded pairs is
                             returned
     """
-    from werkzeug.wsgi import make_chunk_iter
+    from .wsgi import make_chunk_iter
     if return_iterator:
         cls = lambda x: x
     elif cls is None:

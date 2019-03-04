@@ -10,13 +10,16 @@
 """
 import re
 from os import path
-from jinja2 import Environment, FileSystemLoader
 
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
 from werkzeug._compat import unichr
-from werkzeug.local import Local, LocalManager
+from werkzeug.local import Local
+from werkzeug.local import LocalManager
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
 from werkzeug.utils import cached_property
 from werkzeug.wrappers import Response
-from werkzeug.routing import Map, Rule
 
 
 # context locals.  these two objects are use by the application to

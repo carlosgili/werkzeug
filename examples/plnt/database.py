@@ -8,11 +8,20 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-from sqlalchemy import MetaData, Table, Column, ForeignKey, \
-     Integer, String, DateTime
-from sqlalchemy.orm import dynamic_loader, scoped_session, create_session, \
-     mapper
-from plnt.utils import application, local_manager
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy import Table
+from sqlalchemy.orm import create_session
+from sqlalchemy.orm import dynamic_loader
+from sqlalchemy.orm import mapper
+from sqlalchemy.orm import scoped_session
+
+from .utils import application
+from .utils import local_manager
 
 
 def new_db_session():

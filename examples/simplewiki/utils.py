@@ -9,14 +9,18 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import creoleparser
 from os import path
+
+import creoleparser
 from genshi import Stream
 from genshi.template import TemplateLoader
-from werkzeug.local import Local, LocalManager
-from werkzeug.urls import url_encode, url_quote
+from werkzeug.local import Local
+from werkzeug.local import LocalManager
+from werkzeug.urls import url_encode
+from werkzeug.urls import url_quote
 from werkzeug.utils import cached_property
-from werkzeug.wrappers import BaseRequest, BaseResponse
+from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import BaseResponse
 
 
 # calculate the path to the templates an create the template loader

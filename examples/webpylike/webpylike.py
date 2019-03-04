@@ -11,9 +11,13 @@
     :license: BSD-3-Clause
 """
 import re
-from werkzeug.wrappers import BaseRequest, BaseResponse
-from werkzeug.exceptions import HTTPException, MethodNotAllowed, \
-     NotImplemented, NotFound
+
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import MethodNotAllowed
+from werkzeug.exceptions import NotFound
+from werkzeug.exceptions import NotImplemented
+from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import BaseResponse
 
 
 class Request(BaseRequest):

@@ -9,17 +9,20 @@
     :license: BSD-3-Clause
 """
 from os import path
-from sqlalchemy import create_engine
 
+from sqlalchemy import create_engine
+from werkzeug.exceptions import HTTPException
 from werkzeug.middleware.shared_data import SharedDataMiddleware
 from werkzeug.wrappers import Request
 from werkzeug.wsgi import ClosingIterator
-from werkzeug.exceptions import HTTPException
-from plnt.utils import local, local_manager, url_map, endpoints
-from plnt.database import session, metadata
 
-# import the views module because it contains setup code
-import plnt.views
+from . import views
+from .database import metadata
+from .database import session
+from .utils import endpoints
+from .utils import local
+from .utils import local_manager
+from .utils import url_map
 
 #: path to shared data
 SHARED_DATA = path.join(path.dirname(__file__), 'shared')

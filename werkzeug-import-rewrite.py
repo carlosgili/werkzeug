@@ -10,11 +10,11 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import sys
-import os
-import re
-import posixpath
 import difflib
+import os
+import posixpath
+import re
+import sys
 
 
 _from_import_re = re.compile(r'(\s*(>>>|\.\.\.)?\s*)from werkzeug import\s+')

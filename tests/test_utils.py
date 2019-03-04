@@ -8,17 +8,18 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
+import inspect
+from datetime import datetime
+
 import pytest
 
-from datetime import datetime
-import inspect
-
 from werkzeug import utils
-from werkzeug.datastructures import Headers
-from werkzeug.http import parse_date, http_date
-from werkzeug.wrappers import BaseResponse
-from werkzeug.test import Client
 from werkzeug._compat import text_type
+from werkzeug.datastructures import Headers
+from werkzeug.http import http_date
+from werkzeug.http import parse_date
+from werkzeug.test import Client
+from werkzeug.wrappers import BaseResponse
 
 
 def test_redirect():

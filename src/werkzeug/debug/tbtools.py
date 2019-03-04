@@ -8,24 +8,27 @@
     :copyright: 2007 Pallets
     :license: BSD-3-Clause
 """
-import re
-
-import os
-import sys
-import json
+import codecs
 import inspect
+import json
+import os
+import re
+import sys
 import sysconfig
 import traceback
-import codecs
 from tokenize import TokenError
 
-from werkzeug.utils import cached_property, escape
-from werkzeug.debug.console import Console
-from werkzeug._compat import (
-    range_type, PY2, text_type, string_types,
-    to_native, to_unicode, reraise,
-)
-from werkzeug.filesystem import get_filesystem_encoding
+from .._compat import PY2
+from .._compat import range_type
+from .._compat import reraise
+from .._compat import string_types
+from .._compat import text_type
+from .._compat import to_native
+from .._compat import to_unicode
+from ..filesystem import get_filesystem_encoding
+from ..utils import cached_property
+from ..utils import escape
+from .console import Console
 
 
 _coding_re = re.compile(br'coding[:=]\s*([-\w.]+)')

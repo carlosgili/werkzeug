@@ -1,4 +1,6 @@
-from werkzeug.routing import Map, Rule, Submount
+from werkzeug.routing import Map
+from werkzeug.routing import Rule
+from werkzeug.routing import Submount
 
 map = Map([
     Rule('/', endpoint='#language_select'),

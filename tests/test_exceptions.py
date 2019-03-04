@@ -15,9 +15,9 @@
 import pytest
 
 from werkzeug import exceptions
+from werkzeug._compat import text_type
 from werkzeug.datastructures import WWWAuthenticate
 from werkzeug.wrappers import Response
-from werkzeug._compat import text_type
 
 
 def test_proxy_exception():

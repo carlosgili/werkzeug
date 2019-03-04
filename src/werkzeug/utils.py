@@ -11,21 +11,26 @@
     :license: BSD-3-Clause
 """
 import codecs
-import re
 import os
-import sys
 import pkgutil
+import re
+import sys
 import warnings
+
+from ._compat import iteritems
+from ._compat import PY2
+from ._compat import reraise
+from ._compat import string_types
+from ._compat import text_type
+from ._compat import unichr
+from ._internal import _DictAccessorProperty
+from ._internal import _missing
+from ._internal import _parse_signature
 
 try:
     from html.entities import name2codepoint
 except ImportError:
     from htmlentitydefs import name2codepoint
-
-from werkzeug._compat import unichr, text_type, string_types, iteritems, \
-    reraise, PY2
-from werkzeug._internal import _DictAccessorProperty, \
-    _parse_signature, _missing
 
 
 _format_re = re.compile(r'\$(?:(%s)|\{(%s)\})' % (('[a-zA-Z_][a-zA-Z0-9_]*',) * 2))
@@ -436,13 +441,13 @@ def redirect(location, code=302, Response=None):
         unspecified.
     """
     if Response is None:
-        from werkzeug.wrappers import Response
+        from .wrappers import Response
 
     display_location = escape(location)
     if isinstance(location, text_type):
         # Safe conversion is necessary here as we might redirect
         # to a broken URI scheme (for instance itms-services).
-        from werkzeug.urls import iri_to_uri
+        from .urls import iri_to_uri
         location = iri_to_uri(location, safe_conversion=True)
     response = Response(
         '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n'
@@ -689,16 +694,12 @@ class ImportStringError(ImportError):
 
 
 # DEPRECATED
-from werkzeug.datastructures import (
-    MultiDict as _MultiDict,
-    CombinedMultiDict as _CombinedMultiDict,
-    Headers as _Headers,
-    EnvironHeaders as _EnvironHeaders,
-)
-from werkzeug.http import (
-    parse_cookie as _parse_cookie,
-    dump_cookie as _dump_cookie,
-)
+from .datastructures import CombinedMultiDict as _CombinedMultiDict
+from .datastructures import EnvironHeaders as _EnvironHeaders
+from .datastructures import Headers as _Headers
+from .datastructures import MultiDict as _MultiDict
+from .http import dump_cookie as _dump_cookie
+from .http import parse_cookie as _parse_cookie
 
 
 class MultiDict(_MultiDict):

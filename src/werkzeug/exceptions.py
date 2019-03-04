@@ -59,16 +59,17 @@
 """
 import sys
 
+import werkzeug
+from ._compat import implements_to_string
+from ._compat import integer_types
+from ._compat import iteritems
+from ._compat import text_type
+from ._internal import _get_environ
+from .wrappers import Response
+
 # Because of bootstrapping reasons we need to manually patch ourselves
 # onto our parent module.
-import werkzeug
 werkzeug.exceptions = sys.modules[__name__]
-
-from werkzeug._internal import _get_environ
-from werkzeug._compat import iteritems, integer_types, text_type, \
-    implements_to_string
-
-from werkzeug.wrappers import Response
 
 
 @implements_to_string
@@ -777,5 +778,5 @@ _aborter = Aborter()
 BadRequestKeyError = BadRequest.wrap(KeyError)
 
 # imported here because of circular dependencies of werkzeug.utils
-from werkzeug.utils import escape
-from werkzeug.http import HTTP_STATUS_CODES
+from .http import HTTP_STATUS_CODES
+from .utils import escape

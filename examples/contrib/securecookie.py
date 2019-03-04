@@ -9,9 +9,11 @@
     :license: BSD-3-Clause
 """
 from time import asctime
-from werkzeug.serving import run_simple
-from werkzeug.wrappers import BaseRequest, BaseResponse
+
 from werkzeug.contrib.securecookie import SecureCookie
+from werkzeug.serving import run_simple
+from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import BaseResponse
 
 SECRET_KEY = 'V\x8a$m\xda\xe9\xc3\x0f|f\x88\xbccj>\x8bI^3+'
 
