@@ -368,7 +368,7 @@ def test_chunked_encoding(dev_server):
         return [b'YES']
     ''')
 
-    testfile = os.path.join(os.path.dirname(__file__), 'res', 'chunked.txt')
+    testfile = os.path.join(os.path.dirname(__file__), 'res', 'chunked.http')
 
     if sys.version_info[0] == 2:
         from httplib import HTTPConnection
@@ -410,7 +410,7 @@ def test_chunked_encoding_with_content_length(dev_server):
         return [b'YES']
     ''')
 
-    testfile = os.path.join(os.path.dirname(__file__), 'res', 'chunked.txt')
+    testfile = os.path.join(os.path.dirname(__file__), 'res', 'chunked.http')
 
     if sys.version_info[0] == 2:
         from httplib import HTTPConnection

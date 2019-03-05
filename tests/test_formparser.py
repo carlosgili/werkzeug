@@ -242,7 +242,7 @@ class TestMultiPart(object):
 
         for name, boundary, files, text in repository:
             folder = join(resources, name)
-            data = get_contents(join(folder, 'request.txt'))
+            data = get_contents(join(folder, 'request.http'))
             for filename, field, content_type, fsname in files:
                 response = client.post(
                     '/?object=' + field,
@@ -263,7 +263,7 @@ class TestMultiPart(object):
 
     def test_ie7_unc_path(self):
         client = Client(form_data_consumer, Response)
-        data_file = join(dirname(__file__), 'multipart', 'ie7_full_path_request.txt')
+        data_file = join(dirname(__file__), 'multipart', 'ie7_full_path_request.http')
         data = get_contents(data_file)
         boundary = '---------------------------7da36d1b4a0164'
         response = client.post(
